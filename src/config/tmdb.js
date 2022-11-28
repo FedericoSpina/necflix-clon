@@ -5,7 +5,7 @@ export const TMDB = {
     baseURL: "https://api.themoviedb.org/3",
     params: {
       api_key: process.env.REACT_APP_API_KEY,
-      language: "es-ES",
+      language: "en-EN",
     },
     timeout: 2000,
   }),

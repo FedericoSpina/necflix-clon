@@ -1,7 +1,9 @@
 import React from "react";
 // import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-
+/* 
+import styles from "."
+*/
 
 const Card = ({ item }) => {
 //   const navigate = useNavigate();
@@ -62,6 +64,6 @@ const titleContainerStyle = {
 
 const titleStyle = {
   color: "white",
-  fontSize: "2rem",
+  fontSize: "1rem",
   margin: "1rem"
 };

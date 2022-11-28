@@ -1,3 +1,5 @@
+/* import React ,{useState , useEffect} from "react"; */
+
 // import { useAuth } from "../../../auth/context/AuthProvider";
 import Banner from "../components/banner/Banner";
 // import Slider from "../../../common/components/slider/Slider";
@@ -10,44 +12,48 @@ import getTopRatedMovies from "../features/movies/utils/getTopRatedMovies";
 import getPopularseries from "../features/series/utils/getPopularSeries";
 import getTopRatedSeries from "../features/series/utils/getTopRatedSeries";
 import { AuthContext } from "../context/AuthContext";
-import { useContext } from "react";
-
+import { useContext, useEffect } from "react";
+import styles from "./Browse.module.css";
 
 const Browse = () => {
-  const { data : popularMovies} = useFetch(getPopularMovies);
+  const { data: popularMovies } = useFetch(getPopularMovies);
 
-  const { data : topRatedMovies} = useFetch(getTopRatedMovies);
+  const { data: topRatedMovies } = useFetch(getTopRatedMovies);
 
-  const { data : popularSeries} = useFetch(getPopularseries);
+  const { data: popularSeries } = useFetch(getPopularseries);
 
-  const { data : TopRatedSeries} = useFetch(getTopRatedSeries);
+  const { data: TopRatedSeries } = useFetch(getTopRatedSeries);
 
-//   const { isAuth, login, logout } = useAuth();
-//   console.log(isAuth, login, logout);
+  //   const { isAuth, login, logout } = useAuth();
+  //   console.log(isAuth, login, logout);
 
-  const {isAuth, user} = useContext(AuthContext)
-    console.log(isAuth, user.email);
+  const { isAuth, user } = useContext(AuthContext);
+  console.log(isAuth, user.email);
+
+ /*  const [movie, setMovie] = useState<Movie | null>(null)
+
+  useEffect(() => {
+    setMovie(
+      netflixOriginals[Math.floor(Math.random() * netflixOriginals.length)]
+    );
+  }, [netflixOriginals]); */
+  
+  /* Hace un useEffect que cambie de valor del array aleatoriamente */
+  
 
   return (
     <>
       <Banner item={popularMovies[0]} />
-      <div style={titleStyle}>Películas más vistas</div>
+      <div className={styles.titleStyle}>Películas más vistas</div>
       <Slider items={popularMovies} />
-      <div style={titleStyle}>Películas mejor valoradas</div>
+      <div className={styles.titleStyle}>Películas mejor valoradas</div>
       <Slider items={topRatedMovies} />
-      <div style={titleStyle}>Series más vistas</div>
+      <div className={styles.titleStyle}>Series más vistas</div>
       <Slider items={popularSeries} />
-      <div style={titleStyle}>Series mejor valoradas</div>
+      <div className={styles.titleStyle}>Series mejor valoradas</div>
       <Slider items={TopRatedSeries} />
     </>
   );
 };
-
-const titleStyle = {
-    color: "white",
-    fontSize: "4rem",
-    padding: '2rem'
-  };
-
 
 export default Browse;
